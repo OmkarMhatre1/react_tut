@@ -11,10 +11,8 @@ import Header from "./components/Header";
 import Menu from './components/Menu';
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Routes
+  Routes,
+  Route
 } from "react-router-dom";
 
 
@@ -30,7 +28,7 @@ function App() {
 
   return (
     <div>
-        <Router>
+        
         <ToastContainer/>
         <Container>
         <Header />
@@ -39,13 +37,23 @@ function App() {
              <Menu />
             </Col>
             <Col md={8}>
-              <Routes exact path="/" element={<Home/>}  />
-              <Routes exact path="/add-course" element={<AddCourse />} />
-              <Routes exact path="/view-course" element={<AllCourse />} / >
+            <Router>
+              <Routes>
+                {/* <Route exact path='/Dash' element={<Dash />} />
+                <Route exact path="/ippopay/customerchangepass" element={<ChangePass />} />
+                <Route exact path="/Merchant/NewTransaction" element={<NewTransaction />} />
+                <Route exact path="/Merchant/MyTransaction" element={<TransMID />} />
+                <Route exact path="/Merchant/MytransactionKeys" element={<MyKeys />} /> */}
+                <Route exact path="/" element={<Home/>}  />
+                <Route exact path="/add-course" element={<AddCourse />} />
+                <Route exact path="/view-course" element={<AllCourse />} />
+              </Routes>
+            </Router>
+
             </Col>
           </Row>
         </Container>
-        </Router>
+     
 
     </div>  
   ); 
