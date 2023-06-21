@@ -1,14 +1,44 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import Course from "./Course";
+import base_url from './../api/bootapi';
+import axios from "axios";
+import { toast } from "react-toastify";
 
 
 const AllCourse=()=>{
 
+    useEffect(()=> {
+        document.title = "All Courses"
+    }, []);
+
+    //fuction to call server
+    const getAllCoursesFromServer = () =>{
+        axios.get(`${base_url}/products`).then(
+            (Response)=>{
+                //console.log(Response)  
+                console.log(Response.data); 
+                toast.success("courses has been loaded",{
+                    position:toast.POSITION.BOTTOM_CENTER
+                }); 
+                setCourses(Response.data);
+            },
+            (Error)=>{
+               // console.log(Error)
+               toast.error("courses not loaded");
+            }
+        );
+    };
+
+    //calling server fuction
+    useEffect(()=>{
+        getAllCoursesFromServer();
+    }, []);
+
     const [courses, setCourses] = useState([
         
-            {title:"Django Course",description:"Testing"},
-            {title:"Java Course",description:"Testing"},
-            {title:"React Js Course",description:"Testing"},       
+            // {title:"Django Course",description:"Testing"},
+            // {title:"Java Course",description:"Testing"},
+            // {title:"React Js Course",description:"Testing"},       
     ]);
 
 
@@ -20,7 +50,7 @@ const AllCourse=()=>{
             {
 
                 courses.length>0? courses.map((item)=>(
-                    <Course course={item}></Course>
+                    <Course key={item.id} course={item}></Course>
                 )): "No Courses available"
             }
         </div>

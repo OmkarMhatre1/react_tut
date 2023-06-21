@@ -14,8 +14,8 @@ const Menu=()=> {
              <a className="list-group-item list-group-item-action" href="/">Home</a>
              <a className="list-group-item list-group-item-action" href="/add-course">Add Course</a>
              <a className="list-group-item list-group-item-action" href="/view-course">View Courses</a>
-             <a className="list-group-item list-group-item-action" href="/about">View Courses</a>
-             <a className="list-group-item list-group-item-action" href="/contact">View Courses</a>
+             <a className="list-group-item list-group-item-action" href="/about">About</a>
+             <a className="list-group-item list-group-item-action" href="/contact">Contact</a>
         </ListGroup>
 
     );

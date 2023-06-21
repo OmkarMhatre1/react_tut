@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 
 const Home=()=>{
+
+    useEffect (()=>{
+        document.title = "Home || React Project"
+    }, []);
+
     return (
         <div className="text-center">
            
