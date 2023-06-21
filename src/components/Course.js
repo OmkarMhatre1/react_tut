@@ -9,8 +9,22 @@ import{
     Button,
     Container,
 } from "reactstrap";
+import axios from "axios";
+import base_url from './../api/bootapi';
+import { toast } from "react-toastify";
 
-const Course=({course})=>{
+const Course=({course , update})=>{
+
+    const deleteCourse = (id) => {
+        axios.delete(`${base_url}/delete/${id}`).then(
+            (Response)=>{
+                toast.success("Deleted");
+                update(id);
+            },(Error)=>{
+                toast.error("Not deleted");
+            }
+        )
+    }
 
     return(
         <Card className="text-center">
@@ -18,7 +32,9 @@ const Course=({course})=>{
                 <CardSubtitle className="font-weight-bold">{course.title}</CardSubtitle>
                 <CardText >{course.description}</CardText>
                 <Container>
-                    <Button color="danger">Delete</Button>
+                    <Button onClick={()=>{
+                        deleteCourse(course.id);
+                    }} color="danger">Delete</Button>
                     <Button color="warning ms-2">Update</Button>
                 </Container>
             </CardBody>

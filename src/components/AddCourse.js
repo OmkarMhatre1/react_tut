@@ -70,7 +70,7 @@ const AddCourse = () => {
                 </FormGroup> */}
                 <Container className="text-center">
                     <Button type="submit" color="success">Add Course</Button>
-                    <Button color="warning ms-2">clear</Button>
+                    <Button type="reset" color="warning ms-2">clear</Button>
                 </Container>
             </Form>
         </Fragment>

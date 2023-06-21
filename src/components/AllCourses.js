@@ -41,6 +41,10 @@ const AllCourse=()=>{
             // {title:"React Js Course",description:"Testing"},       
     ]);
 
+    const updateCourses=(id)=>{
+        setCourses(courses.filter((c) => c.id != id));
+    };
+
 
     return(
         
@@ -50,7 +54,7 @@ const AllCourse=()=>{
             {
 
                 courses.length>0? courses.map((item)=>(
-                    <Course key={item.id} course={item}></Course>
+                    <Course key={item.id} course={item} update={updateCourses}></Course>
                 )): "No Courses available"
             }
         </div>
